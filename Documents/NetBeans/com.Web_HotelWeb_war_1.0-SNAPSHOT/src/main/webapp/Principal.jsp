@@ -6,7 +6,7 @@
 %>
 <!DOCTYPE html>
 <html lang="es">
-    <head> <!--Ando checando lo del pull y push-->
+    <head> <!--Esta es la pagina principal, donde todo empieza, aqui puedes dirigirte a las otras paginas o iniciar sesion/crear cuenta-->
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  <!--Este es el Bootstrap-->
     <title>Página Principal</title>
