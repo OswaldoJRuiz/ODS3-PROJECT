@@ -1,12 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.Usuario" %>
 <%
-    // Obtener el objeto Usuario almacenado en la sesión
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <!DOCTYPE html>
 <html lang="es">
-    <head> <!--Ando checando lo del pull y push-->
+    <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  <!--Este es el Bootstrap-->
     <title>Página Principal</title>
@@ -20,9 +19,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" href="#">Inicio</a>
-                    <a class="nav-link" href="#">Contacto</a>
-                    <a class="nav-link" href="#">Precios</a>
+                    <a class="nav-link" href="Controlador?action=Inicio">Inicio</a>
+                    <a class="nav-link" href="Controlador?action=Reservas">Reservas</a>
+                    <a class="nav-link" href="Controlador?action=Acerca">Acerca de nosotros</a>
                 </div>
             </div>
             <div class="dropdown">

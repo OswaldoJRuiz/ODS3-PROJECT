@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/* El controlador aun no tiene logica .·´¯`(>▂<)´¯`·.  Pero este servira para redireccionar la pagina principal
-Hacia las opciones de Inicio, Contacto, Precio o el que agregemos*/
+/*Ya funciona (～￣▽￣)～ sirve para que te redireccione a x o y pagina en el navbar,
+    quizas falte el de las reservas ponerlo aqui*/ 
 
 public class Controlador extends HttpServlet {
 
@@ -31,8 +31,14 @@ public class Controlador extends HttpServlet {
        String action=request.getParameter("action");
        switch (action){
            case "Inicio":
-           request.getRequestDispatcher("Principal.jsp").forward(request, response);
-           break;
+               request.getRequestDispatcher("Principal.jsp").forward(request, response);
+               break;
+           case "Reservas":
+               request.getRequestDispatcher("Reservas.jsp").forward(request, response);
+               break;
+           case "Acerca":
+               request.getRequestDispatcher("Acerca.jsp").forward(request, response);
+               break;
        }
     }
 
