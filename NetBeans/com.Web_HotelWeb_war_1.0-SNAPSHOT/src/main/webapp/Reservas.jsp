@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Modelo.Usuario" %>
+<%@page import="Modelo.Usuario"%>
 <%
     Usuario usuario = (Usuario) session.getAttribute("usuario");
 
@@ -21,11 +21,18 @@
 </head>
 <body>
     <div class="container mt-5">
+        <!-- Botón para regresar al inicio -->
+        <div class="d-flex justify-content-start mb-4">
+            <a href="Controlador?action=Inicio" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Inicio
+            </a>
+        </div>
+
         <h2 class="text-center mb-4">Reservas en Guadalajara</h2>
         <p class="text-center">Reserve su habitación en nuestro hotel ubicado en el corazón de Guadalajara.</p>
 
         <!-- Formulario de reservas -->
-        <form action="ConfirmarReservas" method="post" class="p-4 border rounded shadow-sm">
+        <form action="EdicionReserva.jsp" method="post" class="p-4 border rounded shadow-sm">
             <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Campo oculto para el ID del usuario -->
             <div class="mb-3">
                 <label for="checkIn" class="form-label">Fecha de Check-In</label>
@@ -44,7 +51,7 @@
                     <option value="4">4 Huéspedes</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Reservar</button>
+            <button type="submit" class="btn btn-primary w-100">Ver Detalles de la Reserva</button>
         </form>
     </div>
 

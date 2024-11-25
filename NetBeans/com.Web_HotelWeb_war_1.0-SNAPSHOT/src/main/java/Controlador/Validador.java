@@ -31,14 +31,11 @@ public class Validador extends HttpServlet {
 
             us = udao.validar(correo, contraseña);
             if (us != null && us.getUsername() != null) {
-                // Crear una sesión y guardar el usuario
                 HttpSession session = request.getSession();
-                session.setAttribute("usuario", us); // Guarda el objeto Usuario en la sesión
+                session.setAttribute("usuario", us);
 
-                // Redirigir a la página principal o donde desees
                 response.sendRedirect("Principal.jsp");
             } else {
-                // Agregar un mensaje de error al request
                 request.setAttribute("error", "Credenciales incorrectas. Intente de nuevo.");
                 request.getRequestDispatcher("InicioSesion.jsp").forward(request, response);
             }

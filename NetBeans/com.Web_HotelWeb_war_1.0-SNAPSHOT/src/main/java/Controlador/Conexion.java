@@ -15,7 +15,7 @@ public class Conexion {
     // Método para obtener la conexión //
     public Connection getConexion() {
         try {
-            // Carga el driver de MySQL //
+            // Carga el driver de MySQL, se uso la version 8.4.0 //
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {

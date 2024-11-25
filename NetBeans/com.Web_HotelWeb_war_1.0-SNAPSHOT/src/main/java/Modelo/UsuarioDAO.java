@@ -41,7 +41,7 @@ public Usuario validar(String correo, String contraseña) {
     return usuario;
 }
 
-    // Método para registrar un nuevo usuario
+    // Método para registrar un nuevo usuario //
     public boolean registrar(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nombre_usuario, nombre, telefono, correo, contraseña) VALUES (?, ?, ?, ?, ?)";
 
@@ -52,13 +52,13 @@ public Usuario validar(String correo, String contraseña) {
             ps.setString(2, usuario.getNombre());
             ps.setString(3, usuario.getTelefono());
             ps.setString(4, usuario.getCorreo());
-            ps.setString(5, usuario.getContraseña()); // Considera usar un hash para la contraseña
+            ps.setString(5, usuario.getContraseña());
 
             int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0; // Devuelve true si la inserción fue exitosa
+            return rowsAffected > 0;
         } catch (Exception e) {
-            e.printStackTrace(); // Imprimir el error en caso de fallo
-            return false; // Devuelve false en caso de error
+            e.printStackTrace();
+            return false;
         } finally {
             try {
                 if (ps != null) ps.close();
@@ -69,7 +69,7 @@ public Usuario validar(String correo, String contraseña) {
         }
     }
 
-    // Método para verificar si un usuario ya existe
+    // Método para verificar si un usuario ya existe //
     public boolean existeUsuario(String correo, String username) {
         String sql = "SELECT * FROM usuarios WHERE correo = ? OR nombre_usuario = ?";
         try {
@@ -79,10 +79,10 @@ public Usuario validar(String correo, String contraseña) {
             ps.setString(2, username);
             rs = ps.executeQuery();
 
-            return rs.next(); // Devuelve true si hay al menos un registro
+            return rs.next();
         } catch (Exception e) {
-            e.printStackTrace(); // Imprimir el error en caso de fallo
-            return false; // Devuelve false en caso de error
+            e.printStackTrace();
+            return false;
         } finally {
             try {
                 if (rs != null) rs.close();

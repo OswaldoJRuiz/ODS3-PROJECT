@@ -24,7 +24,7 @@ public class RegistrarUsuarios extends HttpServlet {
         String correo = request.getParameter("correo");
         String contraseña = request.getParameter("password"); // Cambia el nombre de la variable a "password" //
 
-        // Verificar si el usuario o el correo ya existen //
+        // Verifica si el usuario o el correo ya existen //
         if (usuarioDAO.existeUsuario(correo, nombre_usuario)) {
             // Si el usuario o el correo ya existen los redirige de vuelta al registro con un mensaje de error //
             response.sendRedirect("CrearCuenta.jsp?error=usuario_existente");
@@ -42,11 +42,11 @@ public class RegistrarUsuarios extends HttpServlet {
         // Llamar al método de registro en el DAO //
         boolean registrado = usuarioDAO.registrar(nuevoUsuario);
 
-        // Verificar el resultado del registro //
+        // Verifica el resultado del registro //
         if (registrado) {
             response.sendRedirect("Principal.jsp"); // Redirige a la página principal después de registrar //
         } else {
-            // Redirigir a la página de creación de cuenta con un mensaje de error si falló el registro //
+            // Redirige a la página de creación de cuenta con un mensaje de error si falló el registro //
             response.sendRedirect("CrearCuenta.jsp?error=registro_fallido");
         }
     }

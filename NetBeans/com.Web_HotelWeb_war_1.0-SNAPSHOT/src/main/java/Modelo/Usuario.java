@@ -22,7 +22,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    // Getters y Setters
+    // Getters y Setters que mas puede ser ㄟ(≧◇≦)ㄏ //
     public int getId() {
         return id;
     }

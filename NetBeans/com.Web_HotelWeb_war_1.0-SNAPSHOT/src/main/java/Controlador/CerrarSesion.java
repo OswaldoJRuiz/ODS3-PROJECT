@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-
-// Este es un servlet para cerrar la sesion "Quizas lo mejor sea hacerlo parte de la configuracion" //
 
 @WebServlet(name = "CerrarSesion", urlPatterns = {"/cerrarSesion"})
 public class CerrarSesion extends HttpServlet {
@@ -18,9 +15,12 @@ public class CerrarSesion extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate(); // Invalida la sesión
+            session.invalidate(); // Invalida la sesión //
+            System.out.println("Sesión cerrada exitosamente.");
+        } else {
+            System.out.println("No había sesión activa.");
         }
-        response.sendRedirect("Principal.jsp"); // Redirige a la página principal
+        response.sendRedirect("Principal.jsp"); // Redirige a la página principal //
     }
 
     @Override

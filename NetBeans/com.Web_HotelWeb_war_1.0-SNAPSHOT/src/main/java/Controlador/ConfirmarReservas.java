@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Controlador.Conexion;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet("/ConfirmarReservas")
@@ -21,25 +20,22 @@ public class ConfirmarReservas extends HttpServlet {
         String fechaCheckout = request.getParameter("fechaCheckout");
         int numHuespedes = Integer.parseInt(request.getParameter("numHuespedes"));
         
-        // Precio por día
+        // Precio por día por huésped //
         double precioPorDia = 600.0;
 
-        // Calcular la cantidad de días entre check-in y check-out
+        // Aqui se calcula la cantidad de días entre check-in y check-out //
         long diferenciaMilisegundos = java.sql.Date.valueOf(fechaCheckout).getTime() - java.sql.Date.valueOf(fechaCheckin).getTime();
         int numDias = (int) (diferenciaMilisegundos / (1000 * 60 * 60 * 24));
-        
-        // Asegúrate de que numDias no sea negativo
         if (numDias <= 0) {
             request.setAttribute("error", "La fecha de check-in debe ser anterior a la fecha de check-out.");
             request.getRequestDispatcher("Error.jsp").forward(request, response);
             return;
         }
+        
+        double montoTotal = numDias * precioPorDia * numHuespedes;
 
-        // Calcular el monto total
-        double montoTotal = numDias * precioPorDia;
-
-        // Guardar la reserva en la base de datos
-        Conexion conexion = new Conexion(); // Instancia de Conexion
+        // Aqui guarda la reserva en la base de datos //
+        Conexion conexion = new Conexion();
         try (Connection con = conexion.getConexion()) {
             String sql = "INSERT INTO reservas (usuario_id, fecha_reserva, fecha_checkin, fecha_checkout, num_huespedes, monto) "
                        + "VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
@@ -57,8 +53,7 @@ public class ConfirmarReservas extends HttpServlet {
             request.getRequestDispatcher("Error.jsp").forward(request, response);
             return;
         }
-
-        // Mostrar el monto total en la vista
+        
         request.setAttribute("montoTotal", montoTotal);
         request.getRequestDispatcher("Confirmacion.jsp").forward(request, response);
     }
